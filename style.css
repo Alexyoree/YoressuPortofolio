@@ -3,7 +3,6 @@
 html {
   scroll-behavior: smooth;
 }
-
 * {
   margin: 0;
   padding: 0;
@@ -98,7 +97,32 @@ nav button#menuButton {
   align-items: center;
   justify-content: space-between;
   gap: 40px;
+  opacity: 0; /* Start hidden */
+  animation: fadeIn 2s forwards;
 }
+
+.left h5, .left h3, .left p, .left button {
+  opacity: 0; /* Start hidden */
+  transform: translateY(20px); /* Start slightly shifted down */
+  animation: slideUp 0.6s forwards; /* Slide up animation */
+}
+
+.left h5 {
+  animation-delay: 0.5s;
+}
+
+.left h3 {
+  animation-delay: 1s;
+}
+
+.left p {
+  animation-delay: 1.5s;
+}
+
+.left button {
+  animation-delay: 2s;
+}
+
 
 .main .left {
   display: flex;
@@ -134,6 +158,28 @@ nav button#menuButton {
 
 .main .right img {
   width: 500px;
+  opacity: 0; /* Start hidden */
+  animation: fadeInImage 2s forwards; /* Fade-in animation for the image */
+  animation-delay: 2s; /* Delay the image animation */
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInImage {
+  to {
+    opacity: 1;
+  }
 }
 
 .skills {
@@ -152,6 +198,14 @@ nav button#menuButton {
   display: flex;
   margin-top: 70px;
   gap: 30px;
+  opacity: 0; /* Start hidden */
+  transform: translateY(20px); /* Start slightly shifted down */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out
+}
+
+.skills .skill-items.show {
+  opacity: 1; /* Fade in */
+  transform: translateY(0); /* Move to original position */
 }
 
 .skills .skill-items .item {
