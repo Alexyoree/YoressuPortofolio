@@ -3,6 +3,7 @@
 html {
   scroll-behavior: smooth;
 }
+
 * {
   margin: 0;
   padding: 0;
@@ -29,6 +30,7 @@ li {
 }
 
 nav {
+  z-index: 2;
   background-color: #fff;
   position: sticky;
   top: 0;
@@ -197,7 +199,7 @@ nav button#menuButton {
 .skills .skill-items {
   display: flex;
   margin-top: 70px;
-  gap: 30px;
+  gap: 50px;
   opacity: 0; /* Start hidden */
   transform: translateY(20px); /* Start slightly shifted down */
   transition: opacity 0.6s ease-out, transform 0.6s ease-out
@@ -645,3 +647,5 @@ footer .bottom .links a {
     width: 100%;
   }
 }
+
+
