@@ -103,7 +103,10 @@ nav button#menuButton {
   animation: fadeIn 2s forwards;
 }
 
-.left h5, .left h3, .left p, .left button {
+.left h5,
+.left h3,
+.left p,
+.left button {
   opacity: 0; /* Start hidden */
   transform: translateY(20px); /* Start slightly shifted down */
   animation: slideUp 0.6s forwards; /* Slide up animation */
@@ -124,7 +127,6 @@ nav button#menuButton {
 .left button {
   animation-delay: 2s;
 }
-
 
 .main .left {
   display: flex;
@@ -202,7 +204,7 @@ nav button#menuButton {
   gap: 30px;
   opacity: 0; /* Start hidden */
   transform: translateY(20px); /* Start slightly shifted down */
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 .skills .skill-items.show {
@@ -648,4 +650,18 @@ footer .bottom .links a {
   }
 }
 
+.beyonce h1 {
+ text-align: center;
+ margin-top: 20px;
+}
+.audio-container {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  height: 50pt;
+}
 
+audio {
+  width: 100%; /* Lebar 100% agar responsif */
+  max-width: 400px; /* Maksimal lebar agar tidak terlalu besar */
+}
