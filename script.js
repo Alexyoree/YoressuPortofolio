@@ -26,17 +26,17 @@ document.addEventListener("DOMContentLoaded", function() {
     observer.observe(skillItems);
   }); 
   
-document.addEventListener("DOMContentLoaded", () => {
+function openMenu() {
     const audio = document.getElementById("background-audio");
 
-    // Menghapus mute agar audio terdengar
-    audio.muted = false;
-
-    // Memastikan audio diputar
-    audio.play().catch(error => {
-        console.error("Autoplay gagal:", error);
+    // Memastikan audio mulai diputar
+    audio.play().then(() => {
+        console.log("Audio mulai dimainkan!");
+    }).catch(error => {
+        console.error("Gagal memutar audio:", error);
     });
-});
+}
+
 
 
   
