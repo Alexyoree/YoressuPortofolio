@@ -26,4 +26,26 @@ document.addEventListener("DOMContentLoaded", function() {
     observer.observe(skillItems);
   }); 
   
+  document.addEventListener("DOMContentLoaded", () => {
+    const audio = document.getElementById("background-audio");
+
+    // Memastikan audio mulai dimainkan
+    const playAudio = () => {
+        audio.play().catch(error => {
+            console.error("Audio gagal dimainkan: ", error);
+        });
+    };
+
+    // Otomatis memulai audio
+    playAudio();
+
+    // Menampilkan kontrol jika browser memblokir autoplay
+    audio.addEventListener("play", () => {
+        console.log("Audio mulai dimainkan");
+    });
+
+    // Menangani izin user pada beberapa browser (terutama mobile)
+    window.addEventListener("click", playAudio, { once: true });
+});
+
   
