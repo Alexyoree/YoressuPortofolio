@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
     observer.observe(skillItems);
   }); 
   
-function openMenu() {
+function opensMenu() {
     const audio = document.getElementById("background-audio");
 
     if (!audio) {
