@@ -26,16 +26,18 @@ document.addEventListener("DOMContentLoaded", function() {
     observer.observe(skillItems);
   }); 
   
-  document.addEventListener("DOMContentLoaded", () => {
+   document.addEventListener("DOMContentLoaded", () => {
     const audio = document.getElementById("background-audio");
-
-    const enableAudio = () => {
-        audio.muted = false; // Hapus mode mute
-        audio.play().catch(error => console.error("Audio gagal dimainkan:", error));
+    const playAudio = () => {
+        audio.play().then(() => {
+            console.log("Audio berhasil diputar!");
+        }).catch(error => {
+            console.error("Autoplay gagal:", error);
+        });
     };
-
-    // Pastikan audio dimainkan setelah interaksi pengguna
-    window.addEventListener("click", enableAudio, { once: true });
+    window.addEventListener("click", playAudio, { once: true });
 });
+
+  
 
   
