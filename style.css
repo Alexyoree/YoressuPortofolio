@@ -655,15 +655,4 @@ footer .bottom .links a {
   margin-top: 50px;
 }
 
-.audio-container {
-  display: flex;
-  margin-left: auto;
-  margin-right: auto;
-  height: 50pt;
-}
 
-audio {
-  margin-top: 20px;
-  width: 100%;
-  max-width: 400px;
-}
