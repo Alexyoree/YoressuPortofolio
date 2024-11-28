@@ -29,13 +29,21 @@ document.addEventListener("DOMContentLoaded", function() {
 function openMenu() {
     const audio = document.getElementById("background-audio");
 
-    // Memastikan audio mulai diputar
-    audio.play().then(() => {
-        console.log("Audio mulai dimainkan!");
-    }).catch(error => {
-        console.error("Gagal memutar audio:", error);
-    });
+    if (!audio) {
+        console.error("Elemen audio tidak ditemukan!");
+        return;
+    }
+
+    audio.muted = false;
+    audio.play()
+        .then(() => {
+            console.log("Audio berhasil diputar!");
+        })
+        .catch(error => {
+            console.error("Audio gagal diputar:", error);
+        });
 }
+
 
 
 
