@@ -29,23 +29,13 @@ document.addEventListener("DOMContentLoaded", function() {
   document.addEventListener("DOMContentLoaded", () => {
     const audio = document.getElementById("background-audio");
 
-    // Memastikan audio mulai dimainkan
-    const playAudio = () => {
-        audio.play().catch(error => {
-            console.error("Audio gagal dimainkan: ", error);
-        });
+    const enableAudio = () => {
+        audio.muted = false; // Hapus mode mute
+        audio.play().catch(error => console.error("Audio gagal dimainkan:", error));
     };
 
-    // Otomatis memulai audio
-    playAudio();
-
-    // Menampilkan kontrol jika browser memblokir autoplay
-    audio.addEventListener("play", () => {
-        console.log("Audio mulai dimainkan");
-    });
-
-    // Menangani izin user pada beberapa browser (terutama mobile)
-    window.addEventListener("click", playAudio, { once: true });
+    // Pastikan audio dimainkan setelah interaksi pengguna
+    window.addEventListener("click", enableAudio, { once: true });
 });
 
   
