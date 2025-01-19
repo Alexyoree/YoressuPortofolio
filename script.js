@@ -16,30 +16,30 @@ document.addEventListener("DOMContentLoaded", function() {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add("show");
-          observer.unobserve(entry.target); // Stop observing once it's shown
+          observer.unobserve(entry.target); 
         }
       });
     }, {
-      threshold: 0.1 // Trigger when 10% of the item is visible
+      threshold: 0.1 
     });
 
     observer.observe(skillItems);
   }); 
   
-  document.addEventListener("DOMContentLoaded", () => {
+function opensMenu() {
     const audio = document.getElementById("background-audio");
 
-    // Memastikan audio dimainkan setelah klik pertama
-    const playAudio = () => {
-        audio.play().then(() => {
+    if (!audio) {
+        console.error("Elemen audio tidak ditemukan!");
+        return;
+    }
+
+    audio.muted = false;
+    audio.play()
+        .then(() => {
             console.log("Audio berhasil diputar!");
-        }).catch(error => {
-            console.error("Autoplay gagal:", error);
+        })
+        .catch(error => {
+            console.error("Audio gagal diputar:", error);
         });
-    };
-
-    // Menunggu interaksi pengguna
-    window.addEventListener("click", playAudio, { once: true });
-});
-
-  
+}
