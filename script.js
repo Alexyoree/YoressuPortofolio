@@ -26,27 +26,20 @@ document.addEventListener("DOMContentLoaded", function() {
     observer.observe(skillItems);
   }); 
   
-function opensMenu() {
+  document.addEventListener("DOMContentLoaded", () => {
     const audio = document.getElementById("background-audio");
 
-    if (!audio) {
-        console.error("Elemen audio tidak ditemukan!");
-        return;
-    }
-
-    audio.muted = false;
-    audio.play()
-        .then(() => {
+    // Memastikan audio dimainkan setelah klik pertama
+    const playAudio = () => {
+        audio.play().then(() => {
             console.log("Audio berhasil diputar!");
-        })
-        .catch(error => {
-            console.error("Audio gagal diputar:", error);
+        }).catch(error => {
+            console.error("Autoplay gagal:", error);
         });
-}
+    };
 
-
-
-
-  
+    // Menunggu interaksi pengguna
+    window.addEventListener("click", playAudio, { once: true });
+});
 
   
