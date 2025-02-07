@@ -1,73 +1,45 @@
-let menuIcon = document.querySelector("#menu-icon");
-let navbar = document.querySelector(".navbar");
+function openMenu() {
+    const nav = document.querySelector('nav');
+    nav.classList.toggle('open');
+}
 
-menuIcon.onclick = () => {
-  menuIcon.classList.toggle("bx-x");
-  navbar.classList.toggle("active");
-};
-
-let sections = document.querySelectorAll("section");
-let navLinks = document.querySelectorAll("header nav a");
-
-window.onscroll = () => {
-  sections.forEach((sec) => {
-    let top = window.scrollY;
-    let offset = sec.offsetTop - 150;
-    let height = sec.offsetHeight;
-    let id = sec.getAttribute("id");
-
-    if (top >= offset && top < offset + height) {
-      navLinks.forEach((links) => {
-        links.classList.remove("active");
-        document
-          .querySelector("header nav a[href*=" + id + "]")
-          .classList.add("active");
-      });
-    }
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelector(".main").style.opacity = "1.2";
   });
 
-  let header = document.querySelector(".header");
+  document.addEventListener("DOMContentLoaded", function() {
+    document.querySelector(".main").style.opacity = "1.2";
 
-  header.classList.toggle("sticky", window.scrollY > 100);
+    const skillItems = document.querySelector(".skill-items");
 
-  menuIcon.classList.remove("bx-x");
-  navbar.classList.remove("active");
-};
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+          observer.unobserve(entry.target); 
+        }
+      });
+    }, {
+      threshold: 0.1 
+    });
 
-var swiper = new Swiper(".mySwiper", {
-  slidesPerView: 1,
-  spaceBetween: 50,
-  loop: true,
-  grabCursor: true,
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-  },
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
-});
+    observer.observe(skillItems);
+  }); 
+  
+function opensMenu() {
+    const audio = document.getElementById("background-audio");
 
-let darkModeIcon = document.querySelector("#darkMode-icon");
+    if (!audio) {
+        console.error("Elemen audio tidak ditemukan!");
+        return;
+    }
 
-darkModeIcon.onclick = () => {
-  darkModeIcon.classList.toggle("bx-sun");
-  document.body.classList.toggle("dark-mode");
-};
-
-ScrollReveal({
-  distance: "80px",
-  duration: 1000,
-  delay: 100,
-});
-
-ScrollReveal().reveal(".home-content, .heading", { origin: "top" });
-ScrollReveal().reveal(
-  ".home-img img, .services-container, .project-box, .testimonial-wrapper, .contact form",
-  { origin: "bottom" }
-);
-ScrollReveal().reveal(".home-content h1, .about-img img", { origin: "left" });
-ScrollReveal().reveal(".home-content h3, .home-content p, .about-content", {
-  origin: "right",
-});
+    audio.muted = false;
+    audio.play()
+        .then(() => {
+            console.log("Audio berhasil diputar!");
+        })
+        .catch(error => {
+            console.error("Audio gagal diputar:", error);
+        });
+}
